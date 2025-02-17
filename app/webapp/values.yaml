@@ -55,15 +55,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-livenessProbe:
-  enabled: false
-  path: ""
-  port: ""
-readinessProbe:
-  enabled: false
-  path: ""
-  port: ""
-
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 podAnnotations: {}
@@ -113,10 +104,12 @@ resources:
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
+  enabled: false
   httpGet:
     path: /
     port: http
 readinessProbe:
+  enabled: false
   httpGet:
     path: /
     port: http
