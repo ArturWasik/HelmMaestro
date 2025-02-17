@@ -46,13 +46,21 @@ spec:
             - name: {{ .name | quote }}
               value: {{ .value | quote }}
             {{- end }}
-          {{- with .Values.livenessProbe.enabled }}
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
-            {{- toYaml . | nindent 12 }}
+            httpGet:
+              {{- with .Values.livenessProbe }}
+              path: {{ .path }}
+              port: {{ .port }}
+              {{- end }}
           {{- end }}
-          {{- with .Values.readinessProbe.enabled }}
+          {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
-            {{- toYaml . | nindent 12 }}
+            httpGet:
+              {{- with .Values.readinessProbe }}
+              path: {{ .path }}
+              port: {{ .port }}
+              {{- end }}
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
