@@ -55,6 +55,15 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+livenessProbe:
+  enabled: false
+  path: ""
+  port: ""
+readinessProbe:
+  enabled: false
+  path: ""
+  port: ""
+
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 podAnnotations: {}

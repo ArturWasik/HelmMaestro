@@ -43,11 +43,11 @@ spec:
               protocol: TCP
           env:
             {{- toYaml .Values.environment | nindent 12 }}
-          {{- with .Values.livenessProbe }}
+          {{- with .Values.livenessProbe.enabled }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.readinessProbe }}
+          {{- with .Values.readinessProbe.enabled }}
           readinessProbe:
             {{- toYaml . | nindent 12 }}
           {{- end }}
